@@ -66,7 +66,7 @@ def log(message: str, fmt: str = "HTML"):
     resp = httpx.post(
         TELEGRAM_POST_URL,
         json={
-            "text": message,
+            "text": f'<pre>{message}</pre>',
             "parse_mode": fmt,
             "disable_notification": True,
         }
@@ -80,7 +80,7 @@ async def alog(message: str, fmt: str = "HTML"):
         resp = await client.post(
             TELEGRAM_POST_URL,
             json={
-                "text": message,
+                "text": f'<pre>{message}</pre>',
                 "parse_mode": fmt,
                 "disable_notification": True,
             }
